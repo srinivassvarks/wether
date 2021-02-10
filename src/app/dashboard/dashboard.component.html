@@ -1,0 +1,44 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="wrapper d-flex" >
+   
+                <section class="main-container">
+                    <app-header></app-header>
+                    
+                    <div class="sub-container">
+                    <div class="row ">
+                        <div class="col-md-3"></div>
+
+                        <div class="col-md-6">
+                        <form [formGroup]="userForm">
+                        <div class=" form-group">
+                            <label>Location</label>
+                            <input type="text" class="form-control" placeholder="Enter the location to search.." formControlName="location" aria-label="" aria-describedby="basic-addon1"  [ngClass]="{ 'is-invalid': submitted && userForm.controls.location.errors }">
+                            
+                        </div>
+                        <div *ngIf="submitted && userForm.controls.location.errors" class="text-danger">
+                            <div *ngIf="userForm.controls.location.errors.required">Location is Required</div>
+                        </div>
+
+                        <div class="form-group">
+                           <label> Forecat Type</label>
+                            <select class="form-control" placeholder="Select Forecat Type.." formControlName="forecasttype" aria-label="" aria-describedby="basic-addon1"  [ngClass]="{ 'is-invalid': submitted && userForm.controls.forecasttype.errors }" ><option value=" " selected>Select Forecast Type... </option> <option *ngFor="let item of ftype" value="{{item.type}}">{{item.type}}</option></select>
+                        </div>
+                        <div *ngIf="submitted && userForm.controls.forecasttype.errors" class="text-danger">
+                            <div *ngIf="userForm.controls.forecasttype.errors.required">Forecast Type is Required</div>
+                        </div>
+                        <div class="form-group mt-3"> <button class="btn btn-outline-secondary" type="button" (click)="search()" >Search</button></div>
+                        
+                        </form>
+
+                    </div>
+                    </div>
+                </div>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</div>
